@@ -1,0 +1,79 @@
+@startuml
+' Definición de clases principales
+class Usuario {
+  -id: int
+  -nombre: string
+  -email: string
+  -rol: string
+  +login(): boolean
+  +logout(): void
+  +getNombre(): string
+  +setNombre(nombre: string): void
+  +getEmail(): string
+  +setEmail(email: string): void
+  +getRol(): string
+  +setRol(rol: string): void
+}
+
+class Proyecto {
+  -id: int
+  -nombre: string
+  -fechaInicio: Date
+  -fechaFin: Date
+  -estado: string
+  -actividades: List<Actividad>
+  -servicios: List<Servicio>
+  +agregarActividad(actividad: Actividad): void
+  +actualizarEstado(nuevoEstado: string): void
+  +getNombre(): string
+  +setNombre(nombre: string): void
+  +getEstado(): string
+  +getActividades(): List<Actividad>
+  +getServicios(): List<Servicio>
+}
+
+class Actividad {
+  -id: int
+  -nombre: string
+  -descripcion: string
+  -fechaInicio: Date
+  -fechaFin: Date
+  -estado: string
+  -responsable: Usuario
+  +asignarResponsable(usuario: Usuario): void
+  +getNombre(): string
+  +setNombre(nombre: string): void
+  +getDescripcion(): string
+  +setDescripcion(descripcion: string): void
+  +getEstado(): string
+  +setEstado(estado: string): void
+  +getResponsable(): Usuario
+}
+
+class Servicio {
+  -id: int
+  -nombre: string
+  -descripcion: string
+  +getNombre(): string
+  +setNombre(nombre: string): void
+  +getDescripcion(): string
+  +setDescripcion(descripcion: string): void
+}
+
+' Especializaciones de Servicio (herencia corregida)
+ConstruccionInfraestructuraVial --|> Servicio
+SupervisionObra --|> Servicio
+ElaboracionProyectos --|> Servicio
+ServiciosTransporte --|> Servicio
+ConsultoriaJuridica --|> Servicio
+ConsultoriaForestal --|> Servicio
+GestionTerrenos --|> Servicio
+Topografia --|> Servicio
+
+' Relaciones entre clases
+Usuario "1" -- "many" Proyecto : gestiona >
+Proyecto "1" -- "many" Actividad : contiene >
+Proyecto "1" -- "many" Servicio : utiliza >
+Actividad "1" -- "1" Usuario : asignado a >
+
+@enduml
