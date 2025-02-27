@@ -3,42 +3,76 @@ package com.visansi.CRUD.model;
 import java.util.Date;
 
 public class Activity {
-
-    //Declaración de variables
     private int id;
-    private String name;
-    private String description;
-    private Date startDate;
-    private Date finishDate;
-    private String state;
-    private User responsible;
+    private String nombre;
+    private String descripcion;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private String estado;
+    private User responsable;
 
-    //Getters and Setters
-    public String getName() {
-        return name;
+    // Constructor
+    public Activity(int id, String nombre, String descripcion, Date fechaInicio, Date fechaFin) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.estado = "Pendiente"; // Estado inicial
     }
 
-    public void setName(String name) {
-        this.name = name;
+    // Métodos públicos
+    public void asignarResponsable(User responsable) {
+        this.responsable = responsable;
+        System.out.println("Responsable asignado a la actividad '" + nombre + "': " + responsable.getNombre());
     }
 
-    public String getDescription() {
-        return description;
+    // Getters y setters
+    public int getId() {
+        return id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getState() {
-        return state;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public User getResponsible() {
-        return responsible;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public User getResponsable() {
+        return responsable;
     }
 }

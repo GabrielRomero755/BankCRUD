@@ -1,39 +1,78 @@
 package com.visansi.CRUD.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Proyect {
-
-    //Declaración de variables
     private int id;
-    private String name;
-    private Date startDate;
-    private Date finishDate;
-    private String state;
-    private List<Activity> activities;
-    private List<Service> services;
+    private String nombre;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private String estado;
+    private List<Activity> actividades;
+    private List<Service> servicios;
 
-
-    //Getters and Settesrs
-    public String getName() {
-        return name;
+    // Constructor
+    public Proyect(int id, String nombre, Date fechaInicio, Date fechaFin) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.estado = "En planificación"; // Estado inicial
+        this.actividades = new ArrayList<Activity>();
+        this.servicios = new ArrayList<>();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    // Métodos públicos
+    public void agregarActividad(Activity actividad) {
+        this.actividades.add(actividad);
+        System.out.println("Actividad '" + actividad.getNombre() + "' agregada al proyecto '" + nombre + "'.");
     }
 
-    public String getState() {
-        return state;
+    public void actualizarEstado(String nuevoEstado) {
+        this.estado = nuevoEstado;
+        System.out.println("El estado del proyecto '" + nombre + "' ha cambiado a: " + nuevoEstado);
     }
 
-    public List<Activity> getActivities() {
-        return activities;
+    // Getters y setters
+    public int getId() {
+        return id;
     }
 
-    public List<Service> getServices() {
-        return services;
+    public String getNombre() {
+        return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public List<Activity> getActividades() {
+        return actividades;
+    }
+
+    public List<Service> getServicios() {
+        return servicios;
+    }
 }
